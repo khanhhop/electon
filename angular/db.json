@@ -1,0 +1,76 @@
+{
+  "products": [
+    {
+      "id": "6ce7",
+      "name": "Product A",
+      "price": 25000,
+      "description": "Hehe",
+      "image": "https://picsum.photos/200/200",
+      "categoryId": "98d1"
+    },
+    {
+      "id": "0a4b",
+      "name": "Product B",
+      "price": 90000,
+      "description": "Hehe",
+      "image": "https://picsum.photos/300/500",
+      "categoryId": "1b63"
+    },
+    {
+      "name": "Product C",
+      "price": 890000,
+      "description": "Hehe",
+      "image": "https://picsum.photos/200/200",
+      "categoryId": "zbLrpVd",
+      "id": "iSG-mYm"
+    }
+  ],
+  "categories": [
+    {
+      "id": "98d1",
+      "name": "Category A",
+      "image": "https://picsum.photos/200/200"
+    },
+    {
+      "id": "1b63",
+      "name": "Category B",
+      "image": "https://picsum.photos/200/260"
+    },
+    {
+      "name": "Category C",
+      "image": "https://picsum.photos/300/500",
+      "id": "zbLrpVd"
+    },
+    {
+      "name": "laptop",
+      "image": "11",
+      "id": "RupEfl2"
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$RbGj3wIQldz8NjC4nKpGsO2RUGTCDvdsKDGHBzlnenAH/tVsPM1Ly",
+      "name": "Admin Oke",
+      "id": 1
+    },
+    {
+      "email": "user@gmail.com",
+      "password": "$2a$10$bFUk9.KM8qDgGEx8skV3QOSWGA5Kr6a03vCpA7TPgOLHRUU5YuOO6",
+      "name": "User",
+      "id": 2
+    },
+    {
+      "email": "adasfa@gmail.con",
+      "password": "$2a$10$ZZPgSclYoNkSvFXkpkhRVOyx/SpyVZ74tzTb/5v1IeM1IBzjeZFs.",
+      "name": "ann ",
+      "id": 3
+    },
+    {
+      "email": "khanh@gmail.com",
+      "password": "$2a$10$Oabm7ZEKrTEDklxPYnNK1.WLbAQHS/TXxZJSnIjgKqd5tWcY4am7O",
+      "name": "hop",
+      "id": 4
+    }
+  ]
+}

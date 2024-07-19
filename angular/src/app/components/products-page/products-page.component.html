@@ -1,0 +1,356 @@
+<div class="bg-[#FDFDFD]">
+  <div class="container mx-auto flex items-center h-[76px]">
+    <ul class="flex items-center gap-x-4">
+      <li>
+        <a routerLink="/" class="font-medium text-[#3A3A3A]">Home</a>
+      </li>
+      <li class="text-[#292D32]">
+        <i class="fa-solid fa-chevron-right"></i>
+      </li>
+      <li>
+        <a href="" class="font-medium text-[#3A3A3A]">All category</a>
+      </li>
+      <li class="text-[#292D32]">
+        <i class="fa-solid fa-chevron-right"></i>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="mt-[100px] mb-16">
+  <div class="container mx-auto grid grid-cols-12 gap-x-6">
+    <form class="col-span-3">
+      <div class="pb-6 border-b border-b-[#BDBDBD]">
+        <div class="flex items-center justify-between">
+          <p class="text-[#003F62] font-medium">Categories</p>
+
+          <p class="text-[#595959] cursor-pointer" (click)="onReset()">Reset</p>
+        </div>
+
+        <div class="mt-3 flex flex-col gap-y-3">
+          <div class="flex items-center gap-x-[10px]">
+            <input
+              type="checkbox"
+              name="filter"
+              id="all"
+              class="checkbox"
+              hidden
+              value="all"
+              (change)="onCheckboxChange($event)"
+              [checked]="idsChecked.includes('all')"
+            />
+            <span
+              class="fake-checkbox w-[30px] h-[30px] rounded-lg bg-[#B3D4E5]"
+            ></span>
+            <span
+              class="fake-checkbox-checked text-white hidden items-center justify-center w-[30px] h-[30px] rounded-lg bg-[#3F3F3F] border border-[#A5A5A5]"
+            >
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <label for="all" class="tex-[#222222] select-none cursor-pointer"
+              >All categories</label
+            >
+
+            <p class="text-[#222222] ml-auto">{{ totalProduct }}</p>
+          </div>
+
+          @for (category of categories; track category.id) {
+          <div class="flex items-center gap-x-[10px]">
+            <input
+              type="checkbox"
+              name="filter"
+              id="{{ category.id }}"
+              class="checkbox"
+              hidden
+              value="{{ category.id }}"
+              (change)="onCheckboxChange($event)"
+              [checked]="idsChecked.includes(category.id)"
+            />
+            <span
+              class="fake-checkbox w-[30px] h-[30px] rounded-lg bg-[#B3D4E5]"
+            ></span>
+            <span
+              class="fake-checkbox-checked text-white hidden items-center justify-center w-[30px] h-[30px] rounded-lg bg-[#3F3F3F] border border-[#A5A5A5]"
+            >
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <label
+              for="{{ category.id }}"
+              class="tex-[#222222] select-none cursor-pointer"
+              >{{ category.name }}</label
+            >
+
+            <p class="text-[#222222] ml-auto">{{ category.products.length }}</p>
+          </div>
+          }
+        </div>
+      </div>
+
+      <div class="py-4 border-b border-b-[#BDBDBD]">
+        <p class="text-[#003F62] font-medium">Avaliability</p>
+
+        <div class="flex items-center mt-3 justify-between">
+          <p class="text-[#303030]">0 selected</p>
+          <p class="text-[#595959]">Reset</p>
+        </div>
+
+        <div class="mt-3 flex flex-col gap-y-3">
+          <div class="flex items-center gap-x-[10px]">
+            <input
+              type="checkbox"
+              name="vailability"
+              id="instock"
+              class="checkbox"
+              hidden
+            />
+            <span
+              class="fake-checkbox w-[30px] h-[30px] rounded-lg bg-[#B3D4E5]"
+            ></span>
+            <span
+              class="fake-checkbox-checked text-white hidden items-center justify-center w-[30px] h-[30px] rounded-lg bg-[#3F3F3F] border border-[#A5A5A5]"
+            >
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <label
+              for="instock"
+              class="tex-[#222222] select-none cursor-pointer"
+              >In stock</label
+            >
+
+            <p class="text-[#222222] ml-auto">5</p>
+          </div>
+
+          <div class="flex items-center gap-x-[10px]">
+            <input
+              type="checkbox"
+              name="vailability"
+              id="outstock"
+              class="checkbox"
+              hidden
+            />
+            <span
+              class="fake-checkbox w-[30px] h-[30px] rounded-lg bg-[#B3D4E5]"
+            ></span>
+            <span
+              class="fake-checkbox-checked text-white hidden items-center justify-center w-[30px] h-[30px] rounded-lg bg-[#3F3F3F] border border-[#A5A5A5]"
+            >
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <label
+              for="outstock"
+              class="tex-[#222222] select-none cursor-pointer"
+              >Out of stock</label
+            >
+
+            <p class="text-[#222222] ml-auto">0</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-4 border-b border-b-[#BDBDBD]">
+        <p class="text-[#003F62] font-medium">Product type</p>
+
+        <div class="flex items-center mt-3 justify-between">
+          <p class="text-[#303030]">0 selected</p>
+          <p class="text-[#595959]">Reset</p>
+        </div>
+
+        <div class="mt-3 flex flex-col gap-y-3">
+          <div class="flex items-center gap-x-[10px]">
+            <input
+              type="checkbox"
+              name="brand"
+              id="smart-watch"
+              class="checkbox"
+              hidden
+            />
+            <span
+              class="fake-checkbox w-[30px] h-[30px] rounded-lg bg-[#B3D4E5]"
+            ></span>
+            <span
+              class="fake-checkbox-checked text-white hidden items-center justify-center w-[30px] h-[30px] rounded-lg bg-[#3F3F3F] border border-[#A5A5A5]"
+            >
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <label
+              for="smart-watch"
+              class="tex-[#222222] select-none cursor-pointer"
+              >Smart-watch</label
+            >
+
+            <p class="text-[#222222] ml-auto">5</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-4 border-b border-b-[#BDBDBD]">
+        <p class="text-[#003F62] font-medium">Brand</p>
+
+        <div class="flex items-center mt-3 justify-between">
+          <p class="text-[#303030]">0 selected</p>
+          <p class="text-[#595959]">Reset</p>
+        </div>
+
+        <div class="mt-3 flex flex-col gap-y-3">
+          <div class="flex items-center gap-x-[10px]">
+            <input
+              type="checkbox"
+              name="brand"
+              id="brand-smart-watch"
+              class="checkbox"
+              hidden
+            />
+            <span
+              class="fake-checkbox w-[30px] h-[30px] rounded-lg bg-[#B3D4E5]"
+            ></span>
+            <span
+              class="fake-checkbox-checked text-white hidden items-center justify-center w-[30px] h-[30px] rounded-lg bg-[#3F3F3F] border border-[#A5A5A5]"
+            >
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <label
+              for="brand-smart-watch"
+              class="tex-[#222222] select-none cursor-pointer"
+              >Smart-watch</label
+            >
+
+            <p class="text-[#222222] ml-auto">5</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-4 border-b border-b-[#BDBDBD]">
+        <p class="text-[#003F62] font-medium">Color</p>
+
+        <div class="flex items-center mt-3 justify-between">
+          <p class="text-[#303030]">0 selected</p>
+          <p class="text-[#595959]">Reset</p>
+        </div>
+
+        <div class="mt-3 flex justify-between">
+          <div class="w-4 h-4 rounded-full bg-[#EDA415]"></div>
+          <div class="w-4 h-4 rounded-full bg-[#E42424]"></div>
+          <div class="w-4 h-4 rounded-full bg-[#1B5A7D]"></div>
+          <div class="w-4 h-4 rounded-full bg-[#ACACAC]"></div>
+          <div class="w-4 h-4 rounded-full bg-[#1D5F23]"></div>
+          <div class="w-4 h-4 rounded-full bg-[#2E56A3]"></div>
+          <div class="w-4 h-4 rounded-full bg-[#8131A7]"></div>
+          <div class="w-4 h-4 rounded-full bg-[#BC2944]"></div>
+          <div class="w-4 h-4 rounded-full bg-[#9BC14C]"></div>
+        </div>
+      </div>
+
+      <div class="py-4 border-b border-b-[#BDBDBD]">
+        <p class="text-[#003F62] font-medium">Size</p>
+
+        <div class="flex items-center mt-3 justify-between">
+          <p class="text-[#303030]">0 selected</p>
+          <p class="text-[#595959]">Reset</p>
+        </div>
+
+        <div class="mt-3 flex flex-col gap-y-3">
+          <div class="flex items-center gap-x-[10px]">
+            <input
+              type="checkbox"
+              name="size"
+              id="size-m"
+              class="checkbox"
+              hidden
+            />
+            <span
+              class="fake-checkbox w-[30px] h-[30px] rounded-lg bg-[#B3D4E5]"
+            ></span>
+            <span
+              class="fake-checkbox-checked text-white hidden items-center justify-center w-[30px] h-[30px] rounded-lg bg-[#3F3F3F] border border-[#A5A5A5]"
+            >
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <label for="size-m" class="tex-[#222222] select-none cursor-pointer"
+              >M</label
+            >
+
+            <p class="text-[#222222] ml-auto">5</p>
+          </div>
+          <div class="flex items-center gap-x-[10px]">
+            <input
+              type="checkbox"
+              name="size"
+              id="size-s"
+              class="checkbox"
+              hidden
+            />
+            <span
+              class="fake-checkbox w-[30px] h-[30px] rounded-lg bg-[#B3D4E5]"
+            ></span>
+            <span
+              class="fake-checkbox-checked text-white hidden items-center justify-center w-[30px] h-[30px] rounded-lg bg-[#3F3F3F] border border-[#A5A5A5]"
+            >
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <label for="size-s" class="tex-[#222222] select-none cursor-pointer"
+              >S</label
+            >
+
+            <p class="text-[#222222] ml-auto">5</p>
+          </div>
+          <div class="flex items-center gap-x-[10px]">
+            <input
+              type="checkbox"
+              name="size"
+              id="size-x"
+              class="checkbox"
+              hidden
+            />
+            <span
+              class="fake-checkbox w-[30px] h-[30px] rounded-lg bg-[#B3D4E5]"
+            ></span>
+            <span
+              class="fake-checkbox-checked text-white hidden items-center justify-center w-[30px] h-[30px] rounded-lg bg-[#3F3F3F] border border-[#A5A5A5]"
+            >
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <label for="size-x" class="tex-[#222222] select-none cursor-pointer"
+              >X</label
+            >
+
+            <p class="text-[#222222] ml-auto">5</p>
+          </div>
+          <div class="flex items-center gap-x-[10px]">
+            <input
+              type="checkbox"
+              name="size"
+              id="size-xx"
+              class="checkbox"
+              hidden
+            />
+            <span
+              class="fake-checkbox w-[30px] h-[30px] rounded-lg bg-[#B3D4E5]"
+            ></span>
+            <span
+              class="fake-checkbox-checked text-white hidden items-center justify-center w-[30px] h-[30px] rounded-lg bg-[#3F3F3F] border border-[#A5A5A5]"
+            >
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <label
+              for="size-xx"
+              class="tex-[#222222] select-none cursor-pointer"
+              >XX</label
+            >
+
+            <p class="text-[#222222] ml-auto">5</p>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="col-span-9 grid grid-cols-3 gap-4">
+      @for (data of products; track data.id) {
+      <app-product-item [data]="data"></app-product-item>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="container mx-auto mb-20">
+  <app-banner-ads></app-banner-ads>
+</div>

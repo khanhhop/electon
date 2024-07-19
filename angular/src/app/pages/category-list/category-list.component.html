@@ -1,0 +1,25 @@
+<div>
+  <h2 class="font-semibold text-xl">Category Management</h2>
+
+  <table class="w-full mt-4 bg-white">
+    <thead>
+      <tr>
+        <th class="py-3 px-2 border border-gray-300">STT</th>
+        <th class="py-3 px-2 border border-gray-300">Category Name</th>
+        <th class="py-3 px-2 border border-gray-300">Category Image</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (item of categories; track item.id; let i = $index) {
+      <tr>
+        <td class="border border-gray-300 px-2 py-3">{{ i + 1 }}</td>
+        <td class="border border-gray-300 px-2 py-3">{{ item.name }}</td>
+        <td class="border border-gray-300 px-2 py-3">
+          <img src="{{ item.image }}" alt="" class="w-36 h-36 object-cover" />
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

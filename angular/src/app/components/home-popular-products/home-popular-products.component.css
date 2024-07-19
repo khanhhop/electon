@@ -1,0 +1,19 @@
+::ng-deep .popular-products .slick-dots {
+  @apply flex items-center justify-center -bottom-12;
+}
+
+::ng-deep .popular-products .slick-dots li {
+  @apply w-4 h-4 mx-1;
+}
+
+::ng-deep .popular-products .slick-dots button {
+  @apply bg-white rounded-full border border-[#adadad] border-solid w-full h-full;
+}
+
+::ng-deep .popular-products .slick-dots button::before {
+  @apply hidden;
+}
+
+::ng-deep .popular-products .slick-dots .slick-active button {
+  @apply bg-[#eda415] border-[#eda415];
+}

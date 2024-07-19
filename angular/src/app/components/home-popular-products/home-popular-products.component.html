@@ -1,0 +1,23 @@
+<div class="popular-products container mx-auto mt-20 mb-24">
+  <div class="flex items-center justify-between">
+    <p class="text-[#1B5A7D] font-semibold text-[28px]">Popular products</p>
+
+    <div class="flex gap-x-3">
+      @for (category of categories; track category.id) {
+      <div
+        class="px-7 h-[45px] rounded-[20px] border flex cursor-pointer"
+        [ngClass]="{ 'border-[#003F62]': currentCategoryId === category.id }"
+        (click)="onClickCategory(category.id)"
+      >
+        <p class="text-[#1B5A7D] font-medium m-auto">{{ category.name }}</p>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="mt-14 grid grid-cols-4 gap-6">
+    @for (product of products; track product.id) {
+    <app-product-item [data]="product"></app-product-item>
+    }
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="container mx-auto my-8">
+  <h1 class="font-semibold text-2xl text-center">Sign Up</h1>
+  <form
+    action=""
+    class="bg-white p-3 rounded mt-4"
+    [formGroup]="signUpForm"
+    (ngSubmit)="onSignUp()"
+  >
+    <div class="mb-4">
+      <label for="" class="font-medium block">Name *</label>
+      <input
+        type="text"
+        class="border border-gray-300 mt-2 w-full rounded px-3 py-2 outline-none"
+        placeholder="Name"
+        formControlName="name"
+      />
+      <p
+        class="text-sm mt-1"
+        *ngIf="
+          !signUpForm.controls.name.valid &&
+          (signUpForm.controls.name.dirty || signUpForm.controls.name.touched)
+        "
+      >
+        Please enter name!
+      </p>
+    </div>
+
+    <div class="mb-4">
+      <label for="" class="font-medium block">Email *</label>
+      <input
+        type="text"
+        class="border border-gray-300 mt-2 w-full rounded px-3 py-2 outline-none"
+        placeholder="Email"
+        formControlName="email"
+      />
+      <p
+        class="text-sm mt-1"
+        *ngIf="
+          !signUpForm.controls.email.valid &&
+          (signUpForm.controls.email.dirty || signUpForm.controls.email.touched)
+        "
+      >
+        Please enter email and valid!
+      </p>
+    </div>
+
+    <div class="mb-4">
+      <label for="" class="font-medium block">Password *</label>
+      <input
+        type="password"
+        class="border border-gray-300 mt-2 w-full rounded px-3 py-2 outline-none"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <p
+        class="text-sm mt-1"
+        *ngIf="
+          !signUpForm.controls.password.valid &&
+          (signUpForm.controls.password.dirty ||
+            signUpForm.controls.password.touched)
+        "
+      >
+        Password is require and minium 6 characters!
+      </p>
+    </div>
+
+    <button
+      [disabled]="!signUpForm.valid"
+      class="bg-[#3c50e0] w-full rounded py-2 text-white font-semibold [&:disabled]:opacity-45"
+    >
+      Sign Up
+    </button>
+  </form>
+</div>
